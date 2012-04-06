@@ -15,8 +15,10 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
-	if (a == b && b == c)
-		:equilateral
+	if (!((b-c).abs < a && a < b+c))
+			raise TriangleError, "ops, isso n eh um triangulo"
+	elsif (a == b && b == c)
+			:equilateral
 	elsif(a == b || b == c || c == a)
 		:isosceles
 	elsif(a != b && a != c && c != b)
