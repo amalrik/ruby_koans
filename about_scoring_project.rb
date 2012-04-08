@@ -31,6 +31,11 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 
 def score(dice)
   # You need to write this method
+	res = 0
+	dice.each do |valor_dice|
+		
+	end
+	res
 end
 
 class AboutScoringProject < EdgeCase::Koan
