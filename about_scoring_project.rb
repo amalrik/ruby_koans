@@ -32,9 +32,14 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 def score(dice)
   # You need to write this method
 	res = 0
-	dice.each do |valor_dice|
-		
-	end
+    (1..6).each do |i|
+        idice = dice.select { |d| d == i }
+        if idice.size >= 3
+            res += (i==1 ? 1000 : i*100)
+        end
+        res += (idice.size % 3) * 100   if i == 1
+        res += (idice.size % 3) *  50   if i == 5
+    end
 	res
 end
 
