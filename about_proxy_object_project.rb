@@ -15,9 +15,29 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 class Proxy
   def initialize(target_object)
     @object = target_object
-    # ADD MORE CODE HERE
+		@mensagens = []
   end
 
+	def method_missing(method_name, *args, &block)
+		@mensagens << method_name
+		@object.send(method_name, *args, &block)		
+	end
+
+	def messages
+		@mensagens
+	end
+
+	def called?(method_name)
+		if @mensagens.find_index(method_name) != nil
+			true
+		else
+			false
+		end	
+	end
+
+	def number_of_times_called(method_name)
+		@mensagens.grep(method_name).count
+	end
   # WRITE CODE HERE
 end
 
